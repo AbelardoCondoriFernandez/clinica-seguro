@@ -1,4 +1,4 @@
-<mat-card>Ingrese datos del paciente</mat-card>
+<mat-card>Ingrese datos del Medico</mat-card>
 <br />
 <form class="example-container" [formGroup]="form" (ngSubmit)="operar()" #loginForm="ngForm">
   <div [hidden]="true">
@@ -19,6 +19,9 @@
     <input matInput placeholder="Dirección" required formControlName="direccion">
   </mat-form-field>
   <mat-form-field class="example-full-width">
+    <input matInput placeholder="CMP" required formControlName="cmp" type="number" maxlength="8">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
     <input matInput placeholder="Telefono" required formControlName="telefono" type="number" maxlength="9">
   </mat-form-field>
 
@@ -26,18 +29,28 @@
     <input matInput placeholder="Email" required formControlName="email" type="email">
   </mat-form-field>
   <mat-form-field class="example-full-width">
-    <input matInput [max]="maxFecha" [matDatepicker]="picker" placeholder="Escoja una Fecha" required
-      formControlName="fechaSeleccionada">
+    <input matInput [max]="maxFecha" [matDatepicker]="picker" placeholder="Fecha de Nacimiento" required
+      formControlName="fechadenacimiento">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput [max]="maxFecha" [matDatepicker]="picker" placeholder="Fecha de Ingreso" required
+      formControlName="fechadeingreso">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Estado" required formControlName="estado">
   </mat-form-field>
   <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">
     <mat-icon>done</mat-icon>
     <span>Aceptar</span>
   </button>
-  <button mat-raised-button color="accent" routerLink='/paciente' type="button">
+  <button mat-raised-button color="accent" routerLink='/medico' type="button">
     <mat-icon>close</mat-icon>
     <span>Cancelar</span>
   </button>
 </form>
 <br />
+
