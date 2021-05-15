@@ -14,56 +14,63 @@ export class EspecialidadService {
   mensaje=new Subject<string>();
   //pacientes:Paciente[]=[];
   constructor(private http: HttpClient) { 
+    /*let p=new Paciente();
+    p.idPaciente=1;
+    p.nombres="Yuri";
+    p.apellidos="Pomachagua";
+    this.pacientes.push(p);
+
+    p=new Paciente();
+    p.idPaciente=2;
+    p.nombres="Milagros";
+    p.apellidos="Collantes";
+    this.pacientes.push(p);//agrega a la lista*/
   }
   
   getlistarEspe(){
-   // let access_token =JSON.parse(sessionStorage.getItem(TOKEN_NAME)).access_token;
+    let access_token =JSON.parse(sessionStorage.getItem(TOKEN_NAME)).access_token;
       //volvera la variable listar
     //  return this.pacientes; 
     //return this.http.get<Paciente[]>(`${this.url}/listar`);
-    return this.http.get<Especialidad[]>(`${this.url}/listar`
-    //  headers:new HttpHeaders().set('Authorization',`bearer${access_token}`).set('Content-Type','application/json')
-    //}
-    );
+    return this.http.get<Especialidad[]>(`${this.url}/listar`,{
+      headers:new HttpHeaders().set('Authorization',`bearer${access_token}`).set('Content-Type','application/json')
+    });
     //http://localhost:8080/paciente/listarPageable?page=1&size=10
     //java moderno
 
   }
   getlistarEspecialidad(p:number,s:number){
-//    let access_token =JSON.parse(sessionStorage.getItem(TOKEN_NAME)).access_token;
+    let access_token =JSON.parse(sessionStorage.getItem(TOKEN_NAME)).access_token;
       //volvera la variable listar
     //  return this.pacientes; 
     //return this.http.get<Paciente[]>(`${this.url}/listar`);
-    return this.http.get<Especialidad[]>(`${this.url}/listarPageable?page=${p}&size=${s}`
-  //    headers:new HttpHeaders().set('Authorization',`bearer${access_token}`).set('Content-Type','application/json')
-  //  }
-  );
+    return this.http.get<Especialidad[]>(`${this.url}/listarPageable?page=${p}&size=${s}`,{
+      headers:new HttpHeaders().set('Authorization',`bearer${access_token}`).set('Content-Type','application/json')
+    });
     //http://localhost:8080/paciente/listarPageable?page=1&size=10
     //java moderno
 
   }
   getEspecialidadPorId(id:number){
-  //  let access_token =JSON.parse(sessionStorage.getItem(TOKEN_NAME)).access_token;
-    return this.http.get<Especialidad>(`${this.url}/listar/${id}`
-    //headers:new HttpHeaders().set('Authorization',`bearer${access_token}`).set('Content-Type','application/json')}
-    );
+    let access_token =JSON.parse(sessionStorage.getItem(TOKEN_NAME)).access_token;
+    return this.http.get<Especialidad>(`${this.url}/listar/${id}`,{
+    headers:new HttpHeaders().set('Authorization',`bearer${access_token}`).set('Content-Type','application/json')});
   }
   registrar(especialidad: Especialidad){
-    //let access_token =JSON.parse(sessionStorage.getItem(TOKEN_NAME)).access_token;
-    return this.http.post(`${this.url}/registrar`,especialidad
-    //headers:new HttpHeaders().set('Authorization',`bearer${access_token}`).set('Content-Type','application/json')}
-    );
+    let access_token =JSON.parse(sessionStorage.getItem(TOKEN_NAME)).access_token;
+    return this.http.post(`${this.url}/registrar`,especialidad,{
+    headers:new HttpHeaders().set('Authorization',`bearer${access_token}`).set('Content-Type','application/json')});
   }
   modificar(especialidad: Especialidad){ 
-//    let access_token =JSON.parse(sessionStorage.getItem(TOKEN_NAME)).access_token;
-    return this.http.put(`${this.url}/actualizar`,especialidad
-  //    headers:new HttpHeaders().set('Authorization',`bearer${access_token}`).set('Content-Type','application/json')
-    );
+    let access_token =JSON.parse(sessionStorage.getItem(TOKEN_NAME)).access_token;
+    return this.http.put(`${this.url}/actualizar`,especialidad,{
+      headers:new HttpHeaders().set('Authorization',`bearer${access_token}`).set('Content-Type','application/json')
+    });
     }
   eliminar(especialidad: Especialidad){
-    //let access_token =JSON.parse(sessionStorage.getItem(TOKEN_NAME)).access_token;
-    return this.http.delete(`${this.url}/eliminar/${especialidad.idEspecialidad}`
-      //headers:new HttpHeaders().set('Authorization',`bearer${access_token}`).set('Content-Type','application/json')
-    );
+    let access_token =JSON.parse(sessionStorage.getItem(TOKEN_NAME)).access_token;
+    return this.http.delete(`${this.url}/eliminar/${especialidad.idEspecialidad}`,{
+      headers:new HttpHeaders().set('Authorization',`bearer${access_token}`).set('Content-Type','application/json')
+    });
   }
 }

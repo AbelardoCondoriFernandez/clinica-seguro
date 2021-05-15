@@ -21,6 +21,10 @@ import { ExamenService } from './_service/examen.service';
 import { EspecialidadComponent } from './pages/especialidad/especialidad.component';
 import { EspecialidadEdicionComponent } from './pages/especialidad/especialidad-edicion/especialidad-edicion.component';
 import { EspecialidadService } from './_service/especialidad.service';
+import { LoginComponent } from './login/login.component';
+import { LoginService } from './_service/login.service';
+import { GuardService } from './_service/guard.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @NgModule({
   declarations: [
@@ -32,7 +36,8 @@ import { EspecialidadService } from './_service/especialidad.service';
     ExamenComponent,
     ExamenEdicionComponent,
     EspecialidadComponent,
-    EspecialidadEdicionComponent
+    EspecialidadEdicionComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +48,7 @@ import { EspecialidadService } from './_service/especialidad.service';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [PacienteService,MedicoService,ExamenService,EspecialidadService,
+  providers: [PacienteService,MedicoService,ExamenService,EspecialidadService,LoginService,GuardService,JwtHelperService,
     { provide: MatDialogRef, useValue: {} },
     { provide: MAT_DIALOG_DATA, useValue: [] },
     { provide: MAT_DATE_LOCALE, useValue:'es-ES'},],
